@@ -1,0 +1,12 @@
+{ "timestamp": "2025-07-27 21:25:40", "level": "INFO", "logger": "LibraryManagementSystem", "message": "User selected option: 3" }
+{ "timestamp": "2025-07-27 21:26:14", "level": "INFO", "logger": "LibraryManagementSystem", "message": "User selected option: 1" }
+{ "timestamp": "2025-07-27 21:26:48", "level": "INFO", "logger": "LibraryManagementSystem", "message": "action=addPatron userId=456 name=Emerson" }
+{ "timestamp": "2025-07-27 21:27:24", "level": "INFO", "logger": "LibraryManagementSystem", "message": "User selected option: 3" }
+{ "timestamp": "2025-07-27 21:27:31", "level": "INFO", "logger": "LibraryManagementSystem", "message": "User selected option: 1" }
+{ "timestamp": "2025-07-27 21:27:46", "level": "INFO", "logger": "LibraryManagementSystem", "message": "action=addPatron userId=890 name=Ron" }
+{ "timestamp": "2025-07-27 21:27:49", "level": "INFO", "logger": "LibraryManagementSystem", "message": "User selected option: 3" }
+{ "timestamp": "2025-07-27 21:27:57", "level": "INFO", "logger": "LibraryManagementSystem", "message": "User selected option: 2" }
+{ "timestamp": "2025-07-27 21:28:01", "level": "INFO", "logger": "LibraryManagementSystem", "message": "action=removePatron requestedId=456" }
+{ "timestamp": "2025-07-27 21:28:07", "level": "INFO", "logger": "LibraryManagementSystem", "message": "User selected option: 4" }
+{ "timestamp": "2025-07-27 21:28:15", "level": "SEVERE", "logger": "LibraryManagementSystem", "message": "Error loading file: rts.txt" }
+{ "timestamp": "2025-07-27 21:28:28", "level": "INFO", "logger": "LibraryManagementSystem", "message": "User selected option: 5" }

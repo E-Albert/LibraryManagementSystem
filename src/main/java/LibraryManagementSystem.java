@@ -1,3 +1,5 @@
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 //exception that handles wrong file name errors. Prevents system from crashing
 import java.io.FileNotFoundException;
@@ -12,7 +14,13 @@ import java.util.Scanner;
 
 //class named LibraryManagementList that will hold attributes and behaviors of the class.
 public class LibraryManagementSystem {
-//list to store patrons
+
+    private static final Logger logger = Logger.getLogger(LibraryManagementSystem.class.getName());
+    private void logAction(String action, String details) {
+        logger.info("action=" + action + " " + details);
+    }
+
+    //list to store patrons
     private List<Patron> patrons;
 
     //constructor to initialize list
@@ -23,7 +31,11 @@ public class LibraryManagementSystem {
     //method to add a patron
     public void addPatron(Patron patron) {
         patrons.add(patron);
-        System.out.println("Successfully added patron.");
+        //System.out.println("Successfully added patron.");
+        logAction("addPatron", "userId=" + patron.getId() + " name=" + patron.getName());
+
+
+
     }
 
     //method to remove a patron by id
@@ -32,12 +44,16 @@ public class LibraryManagementSystem {
         for (Patron patron : patrons) {
             if (patron.getId() == patronId) {
                 patrons.remove(patron);
-                System.out.println("Successfully removed patron.");
+                //System.out.println("Successfully removed patron.");
+                logger.info("action=removePatron requestedId=" + patronId);
+
                 return;
             }
         }
         //returns if matching id isn't found
-        System.out.println("main.java.Patron not found.");
+       //System.out.println("main.java.Patron not found.");
+        logger.warning("Patron with ID " + patronId + " not found.");
+
     }
 
     //method to display all patrons
@@ -72,9 +88,13 @@ public class LibraryManagementSystem {
                     double overdueFine = Double.parseDouble(details[3].trim());
                     //creates new patron, initializes attributes, and adds to list of patrons
                     addPatron(new Patron(id, name, address, overdueFine));
+                    logger.info("Patrons successfully loaded from file: " + filename);
+
                 } else {
                     //error message
-                    System.out.println("Invalid data format in line: " + line);
+                    //System.out.println("Invalid data format in line: " + line);
+                    logger.warning("Invalid data format in line: " + line);
+
                 }
             }
             //closes scanner after reading file
@@ -82,7 +102,9 @@ public class LibraryManagementSystem {
             System.out.println("Patrons successfully loaded from file.");
             //catch block that deals with file not being found
         } catch (FileNotFoundException e) {
-            System.out.println("Error: File not found.");
+            //System.out.println("Error: File not found.");
+            logger.log(Level.SEVERE, "Error loading file: " + filename, e);
+
         } catch (Exception e) {
             System.out.println("Error processing the file: " + e.getMessage());
         }
@@ -97,13 +119,15 @@ public class LibraryManagementSystem {
         while (true) {
             //menu options
             System.out.println("Select a number to continue.");
-            System.out.println("1. Add main.java.Patron");
-            System.out.println("2. Remove main.java.Patron");
+            System.out.println("1. Add Patron");
+            System.out.println("2. Remove Patron");
             System.out.println("3. Display All Patrons");
             System.out.println("4. Load Patrons from File");
             System.out.println("5. Exit");
             //reads users choice as int
             int choice = scanner.nextInt();
+            logger.info("User selected option: " + choice);
+
             //handles users choice
             switch (choice) {
                 case 1:
